@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: git-migrator-backend
+    volumes:
+      - ./backend:/app
+      - ./temp_repos:/app/temp_repos
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always
+
+  frontend:
+    build: ./frontend
+    container_name: git-migrator-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    restart: always
