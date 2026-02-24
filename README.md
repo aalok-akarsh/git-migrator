@@ -1,28 +1,44 @@
-# Git Migrator - Comprehensive VCS Migration Tool
-[cite_start]**Developed for OpsTree Solutions Technical Assessment** [cite: 1]
+Git Migrator – Comprehensive VCS Migration Tool
 
-## 🚀 Overview
-[cite_start]A full-stack solution designed to migrate complete Version Control Systems (VCS) between providers (GitHub, GitLab, BitBucket)[cite: 5]. [cite_start]This tool ensures a high-fidelity transfer of code, history, and metadata[cite: 7].
+Developed for Technical Assessment
 
-## ✨ Key Features
-* [cite_start]**Manual Full Sync**: Immediate repository mirroring including all branches and tags[cite: 11, 14, 16, 20].
-* [cite_start]**Scheduled Sync**: Automated, recurring migrations using a background scheduler[cite: 12].
-* [cite_start]**Granular Aspect Migration**: Specific toggles for **Issues**, **Pull Requests**, and **User** metadata[cite: 13, 17, 18, 19].
-* [cite_start]**Real-time Monitoring**: Integrated console for live migration logs[cite: 9].
+Overview
 
-## 🏗 Architecture
-* [cite_start]**Frontend**: Next.js 15 (React) with Tailwind CSS for a "Proper Web Interface"[cite: 8, 23].
-* [cite_start]**Backend**: FastAPI (Python) utilizing `GitPython` for core Git operations and `APScheduler` for automation[cite: 12, 22].
-* **Deployment**: Fully containerized using Docker and Docker Compose.
+Git Migrator is a full-stack application designed to migrate repositories between major version control platforms such as GitHub, GitLab, and Bitbucket. The tool enables high-fidelity transfer of source code, commit history, branches, tags, and selected metadata while maintaining repository integrity.
 
-## 🛠 Setup & Installation
+Key Features
 
-### Prerequisites
-* Docker & Docker Compose
-* Personal Access Tokens (PAT) for source/destination providers
+Manual Full Sync: Complete repository mirroring including all branches and tags.
 
-### Running the Application
-1. Clone this repository.
-2. Run the entire stack:
-   ```bash
-   docker-compose up --build
+Scheduled Sync: Automated recurring migrations using background job scheduling.
+
+Selective Migration Controls: Optional migration of Issues, Pull Requests, and User metadata.
+
+Real-Time Monitoring: Live console logs to track migration progress and status.
+
+Architecture
+
+Frontend:
+Next.js 15 (React) with Tailwind CSS for responsive web interface
+
+Backend:
+FastAPI (Python)
+
+GitPython for Git operations
+
+APScheduler for scheduled tasks
+
+Containerization:
+Docker & Docker Compose for multi-service orchestration
+
+Setup & Installation
+Prerequisites
+
+Docker
+
+Docker Compose
+
+Personal Access Tokens (PAT) for source and destination VCS providers
+
+Run the Application
+docker-compose up --build
