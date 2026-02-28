@@ -1,44 +1,42 @@
-Git Migrator – Comprehensive VCS Migration Tool
+# Git Migrator
 
-Developed for Technical Assessment
+Full-stack tool to migrate repositories between GitHub, GitLab, and Bitbucket.
 
-Overview
+## What It Supports
+- Manual full sync
+- Scheduled sync (interval based)
+- Repository mirror migration
+- Branch migration
+- Specific branch migration
+- Tag migration
+- Job status tracking
+- Issues migration (GitHub/GitLab/Bitbucket pairs)
+- Pull request / merge request migration (GitHub/GitLab/Bitbucket pairs)
+- User mapping report (GitHub/GitLab/Bitbucket pairs)
 
-Git Migrator is a full-stack application designed to migrate repositories between major version control platforms such as GitHub, GitLab, and Bitbucket. The tool enables high-fidelity transfer of source code, commit history, branches, tags, and selected metadata while maintaining repository integrity.
+## Current Limits
+- Issues/PRs/users migration is implemented for GitHub, GitLab, and Bitbucket provider pairs.
+- User migration maps usernames and reports matches; it does not create users on destination.
+- Bitbucket metadata coverage is implemented for Bitbucket Cloud (bitbucket.org).
 
-Key Features
+## Stack
+- Frontend: Next.js + React + Tailwind
+- Backend: FastAPI + GitPython + APScheduler
+- Deployment: Docker Compose
 
-Manual Full Sync: Complete repository mirroring including all branches and tags.
-
-Scheduled Sync: Automated recurring migrations using background job scheduling.
-
-Selective Migration Controls: Optional migration of Issues, Pull Requests, and User metadata.
-
-Real-Time Monitoring: Live console logs to track migration progress and status.
-
-Architecture
-
-Frontend:
-Next.js 15 (React) with Tailwind CSS for responsive web interface
-
-Backend:
-FastAPI (Python)
-
-GitPython for Git operations
-
-APScheduler for scheduled tasks
-
-Containerization:
-Docker & Docker Compose for multi-service orchestration
-
-Setup & Installation
-Prerequisites
-
-Docker
-
-Docker Compose
-
-Personal Access Tokens (PAT) for source and destination VCS providers
-
-Run the Application
+## Run with Docker
+```bash
 docker-compose up --build
+```
+
+Frontend: `http://localhost:3000`
+Backend: `http://localhost:8000`
+
+## Main API
+- `POST /migrate` - trigger manual migration
+- `POST /schedule?interval_minutes=N` - create recurring job
+- `GET /status/{job_id}` - check job progress
+
+## Notes
+- The frontend reads backend URL from `NEXT_PUBLIC_API_URL` and falls back to `http://127.0.0.1:8000`.
+- Use personal access tokens with least required permissions.
